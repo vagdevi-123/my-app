@@ -1,0 +1,34 @@
+pipeline {
+    agent any
+tools {
+       maven 'mvn_home'
+    }
+    stages {
+        stage('scm-checkout') {
+            steps {
+                git branch: 'main', credentialsId: 'git credentials', url: 'https://github.com/vagdevi-123/my-app.git'
+            }
+        }
+         stage('build') {
+            steps {
+                sh 'mvn compile'
+            }
+        }
+          stage('sonar-testing') {
+            steps {
+                sh 'mvn test'
+            }
+        }
+          stage('package') {
+            steps {
+                sh 'mvn package'
+            }
+        }
+          stage('deploy') {
+            steps {
+                sh 'mvn clean'
+            }
+        }
+    }
+    
+}
