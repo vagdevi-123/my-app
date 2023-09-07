@@ -1,0 +1,17 @@
+node{
+    stage('scm-checkout'){
+        echo "I am in scm-checkout"
+    }
+     stage('Build'){
+        echo "I am in build"
+    }
+     stage('test'){
+        echo "I am in scm-test"
+    }
+     stage('deploy'){
+        echo "I am in deploy"
+    }
+     stage('archive'){
+        echo "I am in archive"
+    }
+}
